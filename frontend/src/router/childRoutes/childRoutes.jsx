@@ -1,7 +1,9 @@
+import Home from "../../components/Home/Home";
+
 const childRoutes=[
     {
         path:"/",
-        element:<h1>Hello</h1>
+        Component:Home
     }
 ]
 export default childRoutes;
