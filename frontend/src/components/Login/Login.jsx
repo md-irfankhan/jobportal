@@ -33,71 +33,71 @@ export default function Login() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-emerald-400 via-cyan-400 to-blue-500 flex items-center justify-center p-4 relative overflow-hidden">
-      {/* Animated background elements */}
+   <div className="min-h-screen bg-white flex items-center justify-center p-4 relative overflow-hidden">
+      {/* Subtle background elements */}
       <div className="absolute inset-0">
-        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-gradient-to-r from-pink-400 to-rose-400 rounded-full mix-blend-multiply filter blur-xl opacity-60 animate-bounce"></div>
-        <div className="absolute top-1/3 right-1/4 w-72 h-72 bg-gradient-to-r from-yellow-400 to-orange-400 rounded-full mix-blend-multiply filter blur-xl opacity-50 animate-pulse"></div>
-        <div className="absolute bottom-1/4 left-1/3 w-80 h-80 bg-gradient-to-r from-green-400 to-emerald-400 rounded-full mix-blend-multiply filter blur-xl opacity-40"></div>
-        <div className="absolute bottom-1/3 right-1/3 w-64 h-64 bg-gradient-to-r from-violet-400 to-purple-400 rounded-full mix-blend-multiply filter blur-xl opacity-50 animate-pulse"></div>
+        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-gradient-to-r from-gray-100 to-gray-200 rounded-full mix-blend-multiply filter blur-xl opacity-30"></div>
+        <div className="absolute top-1/3 right-1/4 w-72 h-72 bg-gradient-to-r from-blue-50 to-indigo-100 rounded-full mix-blend-multiply filter blur-xl opacity-40"></div>
+        <div className="absolute bottom-1/4 left-1/3 w-80 h-80 bg-gradient-to-r from-emerald-50 to-green-100 rounded-full mix-blend-multiply filter blur-xl opacity-35"></div>
+        <div className="absolute bottom-1/3 right-1/3 w-64 h-64 bg-gradient-to-r from-purple-50 to-violet-100 rounded-full mix-blend-multiply filter blur-xl opacity-30"></div>
         
         {/* Floating geometric shapes */}
-        <div className="absolute top-20 left-20 w-8 h-8 bg-white/20 rotate-45 animate-spin" style={{animationDuration: '20s'}}></div>
-        <div className="absolute top-40 right-32 w-6 h-6 bg-white/30 rounded-full animate-bounce" style={{animationDelay: '1s'}}></div>
-        <div className="absolute bottom-32 left-16 w-4 h-4 bg-white/25 transform rotate-12 animate-pulse" style={{animationDelay: '2s'}}></div>
-        <div className="absolute bottom-20 right-20 w-10 h-10 bg-white/15 rotate-45 animate-spin" style={{animationDuration: '15s', animationDelay: '3s'}}></div>
+        <div className="absolute top-20 left-20 w-8 h-8 bg-gray-200/50 rotate-45 animate-spin" style={{animationDuration: '20s'}}></div>
+        <div className="absolute top-40 right-32 w-6 h-6 bg-blue-200/60 rounded-full animate-bounce" style={{animationDelay: '1s'}}></div>
+        <div className="absolute bottom-32 left-16 w-4 h-4 bg-emerald-200/50 transform rotate-12 animate-pulse" style={{animationDelay: '2s'}}></div>
+        <div className="absolute bottom-20 right-20 w-10 h-10 bg-purple-200/40 rotate-45 animate-spin" style={{animationDuration: '15s', animationDelay: '3s'}}></div>
       </div>
 
-      <div className="relative bg-white/10 backdrop-blur-lg rounded-3xl p-8 w-full max-w-md shadow-2xl border border-white/20">
+      <div className="relative bg-white shadow-2xl border border-gray-200 rounded-3xl p-8 w-full max-w-md">
         {/* Header */}
         <div className="text-center mb-8">
           <div className="w-16 h-16 bg-gradient-to-r from-emerald-400 to-cyan-400 rounded-2xl flex items-center justify-center mx-auto mb-4 shadow-lg">
             <User className="w-8 h-8 text-white" />
           </div>
-          <h1 className="text-3xl font-bold text-white mb-2">
+          <h1 className="text-3xl font-bold text-gray-800 mb-2">
             Welcome Back
           </h1>
-          <p className="text-white/70">
+          <p className="text-gray-600">
             Sign in to your account
           </p>
         </div>
 
         {/* Form */}
-        <form onSubmit={handleSubmit} className="space-y-6">
+        <form  onSubmit={handleSubmit} className="space-y-6">
           {/* Email Field */}
           <div className="relative">
             <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
-              <Mail className="h-5 w-5 text-white/50" />
+              <Mail className="h-5 w-5 text-gray-400" />
             </div>
             <input
               type="email"
               name="email"
               required
-            //   value={formData.email}
-            //   onChange={handleInputChange}
+              // value={formData.email}
+              // onChange={handleInputChange}
               placeholder="Enter your email"
-              className="w-full pl-12 pr-4 py-4 bg-white/10 border border-white/20 rounded-2xl text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-emerald-400 focus:border-transparent  transition-all duration-300 backdrop-blur-sm"
+              className="w-full pl-12 pr-4 py-4 bg-gray-50 border border-gray-200 rounded-2xl text-gray-800 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-emerald-400 focus:border-transparent transition-all duration-300"
             />
           </div>
 
           {/* Password Field */}
           <div className="relative">
             <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
-              <Lock className="h-5 w-5 text-white/50" />
+              <Lock className="h-5 w-5 text-gray-400" />
             </div>
             <input
               type={showPassword ? "text" : "password"}
               name="password"
               required
-            //   value={formData.password}
-            //   onChange={handleInputChange}
+              // value={formData.password}
+              // onChange={handleInputChange}
               placeholder="Enter your password"
-              className="w-full pl-12 pr-12 py-4 bg-white/10 border border-white/20 rounded-2xl text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-emerald-400 focus:border-transparent transition-all duration-300 backdrop-blur-sm"
+              className="w-full pl-12 pr-12 py-4 bg-gray-50 border border-gray-200 rounded-2xl text-gray-800 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-emerald-400 focus:border-transparent transition-all duration-300"
             />
             <button
               type="button"
               onClick={() => setShowPassword(!showPassword)}
-              className="absolute inset-y-0 right-0 pr-4 flex items-center text-white/50 hover:text-white/80 transition-colors"
+              className="absolute inset-y-0 right-0 pr-4 flex items-center text-gray-400 hover:text-gray-600 transition-colors"
             >
               {showPassword ? <EyeOff className="h-5 w-5" /> : <Eye className="h-5 w-5" />}
             </button>
@@ -105,19 +105,18 @@ export default function Login() {
 
           {/* Remember Me & Forgot Password */}
           <div className="flex items-center justify-between text-sm">
-            <label className="flex items-center text-white/70 cursor-pointer">
+            <label className="flex items-center text-gray-600 cursor-pointer">
               <input type="checkbox" className="mr-2 rounded" />
               Remember me
             </label>
-            <a href="#" className="text-cyan-300 hover:text-cyan-200 transition-colors">
+            <a href="#" className="text-emerald-600 hover:text-emerald-700 transition-colors">
               Forgot password?
             </a>
           </div>
 
           {/* Submit Button */}
           <button
-          type='submit'
-            
+            type='submit'
             disabled={isLoading}
             className="w-full bg-gradient-to-r from-emerald-500 to-cyan-500 text-white font-semibold py-4 px-6 rounded-2xl hover:from-emerald-600 hover:to-cyan-600 focus:outline-none focus:ring-2 focus:ring-emerald-400 focus:ring-offset-2 focus:ring-offset-transparent transition-all duration-300 transform hover:scale-[1.02] disabled:opacity-50 disabled:cursor-not-allowed shadow-lg flex items-center justify-center group"
           >
@@ -136,15 +135,15 @@ export default function Login() {
         <div className="mt-8">
           <div className="relative">
             <div className="absolute inset-0 flex items-center">
-              <div className="w-full border-t border-white/20"></div>
+              <div className="w-full border-t border-gray-200"></div>
             </div>
             <div className="relative flex justify-center text-sm">
-              <span className="px-4 bg-white/10 text-white/70 rounded-full">Or continue with</span>
+              <span className="px-4 bg-white text-gray-600">Or continue with</span>
             </div>
           </div>
 
           <div className="mt-6 grid grid-cols-2 gap-3">
-            <button className="w-full bg-white/10 border border-white/20 rounded-xl py-3 px-4 text-white hover:bg-white/20 focus:outline-none focus:ring-2 focus:ring-emerald-400 transition-all duration-300 backdrop-blur-sm">
+            <button className="w-full bg-gray-50 border border-gray-200 rounded-xl py-3 px-4 text-gray-700 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-emerald-400 transition-all duration-300">
               <svg className="w-5 h-5 mx-auto" viewBox="0 0 24 24" fill="currentColor">
                 <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
                 <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
@@ -152,7 +151,7 @@ export default function Login() {
                 <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/>
               </svg>
             </button>
-            <button className="w-full bg-white/10 border border-white/20 rounded-xl py-3 px-4 text-white hover:bg-white/20 focus:outline-none focus:ring-2 focus:ring-emerald-400 transition-all duration-300 backdrop-blur-sm">
+            <button className="w-full bg-gray-50 border border-gray-200 rounded-xl py-3 px-4 text-gray-700 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-emerald-400 transition-all duration-300">
               <svg className="w-5 h-5 mx-auto" fill="currentColor" viewBox="0 0 24 24">
                 <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
               </svg>
@@ -162,9 +161,9 @@ export default function Login() {
 
         {/* Sign Up Link */}
         <div className="mt-8 text-center">
-          <p className="text-white/70">
+          <p className="text-gray-600">
             Don't have an account?
-            <a href="#" className="ml-2 text-cyan-300 hover:text-cyan-200 font-semibold transition-colors">
+            <a href="#" className="ml-2 text-emerald-600 hover:text-emerald-700 font-semibold transition-colors">
               Sign Up
             </a>
           </p>
