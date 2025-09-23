@@ -1,23 +1,23 @@
 import { MapPin, Calendar, DollarSign, Building2, Clock } from 'lucide-react';
 import { motion } from "motion/react"
-const JobCard = () => {
-    const job = {
-        title: "Software Engineer",
-        location: "Halishohor, Chittagong",
-        jobType: "Hybrid",
-        category: "Engineering",
-        applicationDeadline: "2024-12-31",
-        salaryRange: {
-            min: 40000,
-            max: 60000,
-            currency: "BDT"
-        },
-        description: "We are seeking a skilled Software Engineer to join our dynamic team. The candidate will work on diverse projects and contribute to innovative solutions.",
-        company: "Favorite IT",
-        requirements: ["JavaScript", "React", "Node.js", "MongoDB"],
-        status: "active",
-        company_logo: "https://i.ibb.co/mXD5MNf/facebook.png"
-    };
+const JobCard = ({job}) => {
+    // const job = {
+    //     title: "Software Engineer",
+    //     location: "Halishohor, Chittagong",
+    //     jobType: "Hybrid",
+    //     category: "Engineering",
+    //     applicationDeadline: "2024-12-31",
+    //     salaryRange: {
+    //         min: 40000,
+    //         max: 60000,
+    //         currency: "BDT"
+    //     },
+    //     description: "We are seeking a skilled Software Engineer to join our dynamic team. The candidate will work on diverse projects and contribute to innovative solutions.",
+    //     company: "Favorite IT",
+    //     requirements: ["JavaScript", "React", "Node.js", "MongoDB"],
+    //     status: "active",
+    //     company_logo: "https://i.ibb.co/mXD5MNf/facebook.png"
+    // };
 
     const formatSalary = (min, max, currency) => {
         return `${currency} ${min.toLocaleString()} - ${max.toLocaleString()}`;

@@ -32,6 +32,12 @@ async function run() {
     const jobsColl=database.collection('jobs');
     const users=database.collection('users');
 
+    app.get('/jobs',async(req,res)=>{
+      const cursor=jobsColl.find();
+      const result=await cursor.toArray();
+      res.send(result);
+    })
+
 
     //user Logic
 
