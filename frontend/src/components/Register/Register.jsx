@@ -62,6 +62,13 @@ export default function Register() {
   const handleGoogle=()=>{
     googleSignUp().then(res=>{
         console.log(res);
+         axios.patch('http://localhost:3000/updateuser',{
+         displayName:res.user.displayName,
+              email:res.user.email,
+              photoURL:res.user.photoURL,
+              createdAt:res.user.metadata.createdAt,
+              lastLoginAt:res.user.metadata.lastLoginAt
+      })
         
     }).catch(err=>{
         console.log(err);

@@ -1,6 +1,6 @@
 const express = require('express');
 require('dotenv').config()
-const { MongoClient, ServerApiVersion } = require('mongodb');
+const { MongoClient, ServerApiVersion, ObjectId } = require('mongodb');
 const app = express()
 const port = 3000 || process.env.PORT;
 const cors=require('cors');
@@ -39,6 +39,30 @@ async function run() {
       const reqBody=req.body;
       const result=await users.insertOne(reqBody);
       res.send(result);
+    })
+
+    app.get('/user/:id',async(req,res)=>{
+      const email=req.params.email;
+      const query={email:email};
+      const result=await users.findOne(query);
+      res.send(result)
+    })
+
+    app.patch('/updateuser',async(req,res)=>{
+      const reqBody=req.body;
+      const query={email:reqBody.email}
+      const update={
+        $set:{
+          displayName:reqBody.displayName,
+          photoURL:reqBody.photoURL,
+          createdAt:reqBody.createdAt,
+          lastLoginAt:reqBody.lastLoginAt
+        }
+      }
+      const options = { upsert: true };
+      const result=await users.updateOne(query,update,options);
+      res.send(result);
+
     })
     // Send a ping to confirm a successful connection
     await client.db("admin").command({ ping: 1 });

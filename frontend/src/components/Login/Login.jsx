@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Eye, EyeOff, Mail, Lock, User, ArrowRight } from 'lucide-react';
 import { Link } from 'react-router'
 import { useAuth } from '../../AuthProvider/AuthProvider';
+import axios from 'axios';
 export default function Login() {
   const { loginUser,googleSignUp } = useAuth();
   const [showPassword, setShowPassword] = useState(false);
@@ -24,6 +25,14 @@ export default function Login() {
     loginUser(data.email, data.password).then(res => {
       console.log(res);
       setIsLoading(false);
+      axios.patch('http://localhost:3000/updateuser',{
+         displayName:res.user.displayName,
+              email:res.user.email,
+              photoURL:res.user.photoURL,
+              createdAt:res.user.metadata.createdAt,
+              lastLoginAt:res.user.metadata.lastLoginAt
+      })
+
 
     }).catch(err => {
       console.log(err);
@@ -39,6 +48,17 @@ export default function Login() {
   const handleGoogle = () => {
     googleSignUp().then(res => {
       console.log(res);
+      axios.patch('http://localhost:3000/updateuser',{
+              displayName:res.user.displayName,
+              email:res.user.email,
+              photoURL:res.user.photoURL,
+              createdAt:res.user.metadata.createdAt,
+              lastLoginAt:res.user.metadata.lastLoginAt
+      }).catch(err=>{
+        console.log(err);
+        
+      })
+
 
     }).catch(err => {
       console.log(err);
