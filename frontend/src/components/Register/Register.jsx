@@ -8,14 +8,6 @@ export default function Register() {
   const [isLoading, setIsLoading] = useState(false);
 
 
-
-//   const handleInputChange = (e) => {
-//     setFormData({
-//       ...formData,
-//       [e.target.name]: e.target.value
-//     });
-//   };
-
   const handleSubmit = async (e) => {
     e.preventDefault();
     const formData = new FormData(e.target);
