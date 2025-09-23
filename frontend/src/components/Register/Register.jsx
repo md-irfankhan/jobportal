@@ -1,7 +1,7 @@
 import { useState } from 'react';
-import { Eye, EyeOff, Mail, Lock, User, ArrowRight } from 'lucide-react';
+import { Eye, EyeOff, Mail, Lock, User, ArrowRight, UserRound, Image } from 'lucide-react';
 import {Link} from 'react-router'
-export default function Login() {
+export default function Register() {
 //   const [formData, setFormData] = useState({
 //     email: '',
 //     password: ''
@@ -55,15 +55,45 @@ export default function Login() {
             <User className="w-8 h-8 text-white" />
           </div>
           <h1 className="text-3xl font-bold text-gray-800 mb-2">
-            Welcome Back
+            Hello!
           </h1>
           <p className="text-gray-600">
-            Sign in to your account
+            Register your account
           </p>
         </div>
 
         {/* Form */}
         <form  onSubmit={handleSubmit} className="space-y-6">
+          {/* Name  */}
+          <div className="relative">
+            <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+              <UserRound className="h-5 w-5 text-gray-400" />
+            </div>
+            <input
+              type="text"
+              name="name"
+              required
+              // value={formData.email}
+              // onChange={handleInputChange}
+              placeholder="Enter your name"
+              className="w-full pl-12 pr-4 py-4 bg-gray-50 border border-gray-200 rounded-2xl text-gray-800 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-emerald-400 focus:border-transparent transition-all duration-300"
+            />
+          </div>
+          {/* Photo  */}
+          <div className="relative">
+            <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+              <Image className="h-5 w-5 text-gray-400" />
+            </div>
+            <input
+              type="text"
+              name="photo"
+              required
+              // value={formData.email}
+              // onChange={handleInputChange}
+              placeholder="Enter your photoUrl"
+              className="w-full pl-12 pr-4 py-4 bg-gray-50 border border-gray-200 rounded-2xl text-gray-800 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-emerald-400 focus:border-transparent transition-all duration-300"
+            />
+          </div>
           {/* Email Field */}
           <div className="relative">
             <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
@@ -103,16 +133,7 @@ export default function Login() {
             </button>
           </div>
 
-          {/* Remember Me & Forgot Password */}
-          <div className="flex items-center justify-between text-sm">
-            <label className="flex items-center text-gray-600 cursor-pointer">
-              <input type="checkbox" className="mr-2 rounded" />
-              Remember me
-            </label>
-            <a href="#" className="text-emerald-600 hover:text-emerald-700 transition-colors">
-              Forgot password?
-            </a>
-          </div>
+     
 
           {/* Submit Button */}
           <button
@@ -124,7 +145,7 @@ export default function Login() {
               <div className="w-6 h-6 border-2 border-white/30 border-t-white rounded-full animate-spin"></div>
             ) : (
               <>
-                Sign In
+                Register
                 <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
               </>
             )}
@@ -162,9 +183,9 @@ export default function Login() {
         {/* Sign Up Link */}
         <div className="mt-8 text-center">
           <p className="text-gray-600">
-            Don't have an account?
-            <Link to="/register" className="ml-2 text-emerald-600 hover:text-emerald-700 font-semibold transition-colors">
-              Sign Up
+            Already have an account?
+            <Link to={'/login'} className="ml-2 text-emerald-600 hover:text-emerald-700 font-semibold transition-colors">
+              Login
             </Link>
           </p>
         </div>

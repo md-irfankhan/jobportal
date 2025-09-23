@@ -2,6 +2,7 @@ import Dashboard from "../../components/Dashboard/Dashboard";
 import Details from "../../components/Details/Details";
 import Home from "../../components/Home/Home";
 import Login from "../../components/Login/Login";
+import Register from "../../components/Register/Register";
 
 const childRoutes=[
     {
@@ -19,6 +20,10 @@ const childRoutes=[
     {
         path:'/login',
         Component:Login
+    },
+    {
+        path:'/register',
+        Component:Register
     }
 ]
 export default childRoutes;
