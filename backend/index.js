@@ -30,6 +30,16 @@ async function run() {
     await client.connect();
     const database = client.db("EJOB");
     const jobsColl=database.collection('jobs');
+    const users=database.collection('users');
+
+
+    //user Logic
+
+    app.post('/adduser',async(req,res)=>{
+      const reqBody=req.body;
+      const result=await users.insertOne(reqBody);
+      res.send(result);
+    })
     // Send a ping to confirm a successful connection
     await client.db("admin").command({ ping: 1 });
     console.log("Pinged your deployment. You successfully connected to MongoDB!");

@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import axios from 'axios';
 import { Eye, EyeOff, Mail, Lock, User, ArrowRight, UserRound, Image } from 'lucide-react';
 import {Link} from 'react-router'
 import {useAuth} from '../../AuthProvider/AuthProvider'
@@ -19,7 +20,25 @@ export default function Register() {
     createUser(data.email,data.password).then(res=>{
         updateUser(data.name,data.photo).then(()=>{
             console.log(res);
-            setIsLoading(false);
+            
+            axios.post('http://localhost:3000/adduser',{
+              displayName:res.user.displayName,
+              email:res.user.email,
+              photoURL:res.user.photoURL,
+              createdAt:res.user.metadata.createdAt,
+              lastLoginAt:res.user.metadata.lastLoginAt
+
+            }).then(data=>{
+              setIsLoading(false);
+              console.log(data);
+              
+
+            }).catch(err=>{
+              console.log(err);
+              setIsLoading(false)
+              
+            })
+            
             
 
         }).catch(err=>{
