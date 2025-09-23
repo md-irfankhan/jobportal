@@ -1,7 +1,21 @@
 import React from 'react';
-import { NavLink } from 'react-router';
+import { Link, NavLink } from 'react-router';
+import { useAuth } from '../../AuthProvider/AuthProvider';
 
 const Nav = () => {
+    const { user ,logOut} = useAuth();
+    const handleLogOut=()=>{
+        logOut().then(res=>{
+            console.log("LogOut Successfull");
+            
+        }).catch(err=>{
+            console.log(err);
+            
+        })
+
+    }
+
+    const authClasses = "relative inline-block px-4 py-3 text-gray-800 font-semibold  bg-black/5 backdrop-blur-md border border-gray-300/50 rounded-2xl transition-all duration-300 ease-out hover:bg-opacity-10 hover:border-opacity-70 hover:-translate-y-1 hover:shadow-xl hover:shadow-gray-400/20 active:translate-y-0 active:shadow-lg before:absolute before:inset-0 before:rounded-2xl before:bg-gradient-to-r before:from-gray-200/30 before:to-transparent before:opacity-0 before:transition-opacity before:duration-300 hover:before:opacity-100 group"
     return (
         <div>
             <div className="navbar bg-base-100 ">
@@ -28,8 +42,75 @@ const Nav = () => {
                     </ul>
                 </div>
                 <div className="navbar-end gap-x-2">
-                    <a className="btn">Login</a>
-                    <a className="btn">SignUp</a>
+                    {!user && <>
+                        <Link
+                            to="/login"
+                            className={authClasses}
+                        >
+                            <span className="relative z-10 flex items-center gap-2">
+                                Login
+                                <svg
+                                    className="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1"
+                                    fill="none"
+                                    stroke="currentColor"
+                                    viewBox="0 0 24 24"
+                                >
+                                    <path
+                                        strokeLinecap="round"
+                                        strokeLinejoin="round"
+                                        strokeWidth={2}
+                                        d="M17 8l4 4m0 0l-4 4m4-4H3"
+                                    />
+                                </svg>
+                            </span>
+                        </Link>
+                        <Link
+                            to="/register"
+                            className={authClasses}
+                        >
+                            <span className="relative z-10 flex items-center gap-2">
+                                SignUp
+                                <svg
+                                    className="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1"
+                                    fill="none"
+                                    stroke="currentColor"
+                                    viewBox="0 0 24 24"
+                                >
+                                    <path
+                                        strokeLinecap="round"
+                                        strokeLinejoin="round"
+                                        strokeWidth={2}
+                                        d="M17 8l4 4m0 0l-4 4m4-4H3"
+                                    />
+                                </svg>
+                            </span>
+                        </Link>
+                    </>
+                    }
+
+                    {user && <button
+                        onClick={handleLogOut}
+                        className={authClasses}
+                    >
+                        <span className="relative z-10 flex items-center gap-2">
+                           LogOut
+                            <svg
+                                className="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1"
+                                fill="none"
+                                stroke="currentColor"
+                                viewBox="0 0 24 24"
+                            >
+                                <path
+                                    strokeLinecap="round"
+                                    strokeLinejoin="round"
+                                    strokeWidth={2}
+                                    d="M17 8l4 4m0 0l-4 4m4-4H3"
+                                />
+                            </svg>
+                        </span>
+                    </button>}
+
+                    {/* <Link to={'/register'} className="btn">SignUp</Link> */}
                 </div>
             </div>
         </div>
