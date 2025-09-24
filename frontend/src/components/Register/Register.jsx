@@ -1,12 +1,17 @@
 import { useState } from 'react';
 import axios from 'axios';
 import { Eye, EyeOff, Mail, Lock, User, ArrowRight, UserRound, Image } from 'lucide-react';
-import {Link} from 'react-router'
+import {Link, useLocation, useNavigate} from 'react-router'
 import {useAuth} from '../../AuthProvider/AuthProvider'
 export default function Register() {
-  const {createUser,googleSignUp,updateUser}=useAuth();
+  const {createUser,googleSignUp,updateUser,user}=useAuth();
   const [showPassword, setShowPassword] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+  const navigate=useNavigate()
+  const location=useLocation()
+  if(user){
+    navigate(location.state?location.state:"/")
+  }
 
 
   const handleSubmit = async (e) => {
@@ -30,6 +35,7 @@ export default function Register() {
 
             }).then(data=>{
               setIsLoading(false);
+              navigate(location.state?location.state:"/")
               console.log(data);
               
 
@@ -70,6 +76,8 @@ export default function Register() {
               lastLoginAt:res.user.metadata.lastLoginAt
       })
         
+    }).then(res=>{
+      navigate(location.state?location.state:"/")
     }).catch(err=>{
         console.log(err);
         

@@ -1,13 +1,18 @@
 import { useState } from 'react';
 import { Eye, EyeOff, Mail, Lock, User, ArrowRight } from 'lucide-react';
-import { Link } from 'react-router'
+import { Link, useLocation, useNavigate } from 'react-router'
 import { useAuth } from '../../AuthProvider/AuthProvider';
 import axios from 'axios';
 export default function Login() {
-  const { loginUser,googleSignUp } = useAuth();
+  const { loginUser,googleSignUp,user } = useAuth();
   const [showPassword, setShowPassword] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+  const navigate=useNavigate()
+  const location=useLocation()
 
+  if(user){
+    navigate(location.state?location.state:"/")
+  }
 
   //   const handleInputChange = (e) => {
   //     setFormData({
@@ -31,6 +36,8 @@ export default function Login() {
               photoURL:res.user.photoURL,
               createdAt:res.user.metadata.createdAt,
               lastLoginAt:res.user.metadata.lastLoginAt
+      }).then(res=>{
+        navigate(location.state?location.state:"/")
       })
 
 
@@ -54,6 +61,8 @@ export default function Login() {
               photoURL:res.user.photoURL,
               createdAt:res.user.metadata.createdAt,
               lastLoginAt:res.user.metadata.lastLoginAt
+      }).then(res=>{
+        navigate(location.state?location.state:"/")
       }).catch(err=>{
         console.log(err);
         
@@ -196,7 +205,7 @@ export default function Login() {
         <div className="mt-8 text-center">
           <p className="text-gray-600">
             Don't have an account?
-            <Link to="/register" className="ml-2 text-emerald-600 hover:text-emerald-700 font-semibold transition-colors">
+            <Link state={location.state} to="/register" className="ml-2 text-emerald-600 hover:text-emerald-700 font-semibold transition-colors">
               Sign Up
             </Link>
           </p>
