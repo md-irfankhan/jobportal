@@ -3,6 +3,7 @@ import Dashboard from "../../components/Dashboard/Dashboard";
 import Details from "../../components/Details/Details";
 import Home from "../../components/Home/Home";
 import Login from "../../components/Login/Login";
+import Private from "../../components/Private/Private";
 import Register from "../../components/Register/Register";
 
 const childRoutes=[
@@ -30,7 +31,7 @@ const childRoutes=[
     {
         path:'/apply/:id',
         loader:({params})=>fetch(`http://localhost:3000/job/${params.id}`),
-        element:<Apply></Apply>
+        element:<Private><Apply></Apply></Private>
     }
 ]
 export default childRoutes;
