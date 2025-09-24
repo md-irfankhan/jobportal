@@ -1,3 +1,4 @@
+import Apply from "../../components/Apply/Apply";
 import Dashboard from "../../components/Dashboard/Dashboard";
 import Details from "../../components/Details/Details";
 import Home from "../../components/Home/Home";
@@ -25,6 +26,11 @@ const childRoutes=[
     {
         path:'/register',
         Component:Register
+    },
+    {
+        path:'/apply/:id',
+        loader:({params})=>fetch(`http://localhost:3000/job/${params.id}`),
+        element:<Apply></Apply>
     }
 ]
 export default childRoutes;

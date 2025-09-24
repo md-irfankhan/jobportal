@@ -31,6 +31,7 @@ async function run() {
     const database = client.db("EJOB");
     const jobsColl=database.collection('jobs');
     const users=database.collection('users');
+    const applications=database.collection('applications');
 
     app.get('/jobs',async(req,res)=>{
       const cursor=jobsColl.find();
@@ -43,6 +44,12 @@ async function run() {
       const query={_id:new ObjectId(id)};
       const result=await jobsColl.findOne(query);
       res.send(result);
+
+    })
+    app.post('/apply',async(req,res)=>{
+      const reqBody=req.body;
+      const result=await applications.insertOne(reqBody);
+      res.send(result)
 
     })
 
