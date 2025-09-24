@@ -1,27 +1,30 @@
-import React from 'react';
+import React, { use } from 'react';
 import { MapPin, Calendar, DollarSign, Building2, Mail, User, Briefcase, CheckCircle } from 'lucide-react';
+import { Link, useLoaderData } from 'react-router';
+
 
 export default function Details() {
-  const job = {
-    title: "Software Engineer",
-    location: "Halishohor, Chittagong",
-    jobType: "Hybrid",
-    category: "Engineering",
-    applicationDeadline: "2024-12-31",
-    salaryRange: {
-      min: 40000,
-      max: 60000,
-      currency: "BDT"
-    },
-    description: "We are seeking a skilled Software Engineer to join our dynamic team. The candidate will work on diverse projects and contribute to innovative solutions.",
-    company: "Favorite IT",
-    requirements: ["JavaScript", "React", "Node.js", "MongoDB"],
-    responsibilities: ["Develop and maintain software", "Collaborate with the team", "Participate in code reviews"],
-    status: "active",
-    hr_email: "hr@techsolutions.com",
-    hr_name: "Farhan Rahman",
-    company_logo: "https://i.ibb.co/mXD5MNf/facebook.png"
-  };
+  const job=useLoaderData();
+  // const job = {
+  //   title: "Software Engineer",
+  //   location: "Halishohor, Chittagong",
+  //   jobType: "Hybrid",
+  //   category: "Engineering",
+  //   applicationDeadline: "2024-12-31",
+  //   salaryRange: {
+  //     min: 40000,
+  //     max: 60000,
+  //     currency: "BDT"
+  //   },
+  //   description: "We are seeking a skilled Software Engineer to join our dynamic team. The candidate will work on diverse projects and contribute to innovative solutions.",
+  //   company: "Favorite IT",
+  //   requirements: ["JavaScript", "React", "Node.js", "MongoDB"],
+  //   responsibilities: ["Develop and maintain software", "Collaborate with the team", "Participate in code reviews"],
+  //   status: "active",
+  //   hr_email: "hr@techsolutions.com",
+  //   hr_name: "Farhan Rahman",
+  //   company_logo: "https://i.ibb.co/mXD5MNf/facebook.png"
+  // };
 
   const formatSalary = (min, max, currency) => {
     return `${currency} ${min.toLocaleString()} - ${max.toLocaleString()}`;
@@ -140,9 +143,11 @@ export default function Details() {
           <div className="space-y-6">
             {/* Apply Card */}
             <div className="bg-white rounded-xl shadow-lg p-6">
-              <button className="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-4 px-6 rounded-lg transition-colors duration-200 mb-4">
+              <Link to={`/apply/${job._id}`}>
+                <button className="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-4 px-6 rounded-lg transition-colors duration-200 mb-4">
                 Apply for this Job
               </button>
+              </Link>
               <p className="text-sm text-gray-500 text-center">
                 Application deadline: {formatDeadline(job.applicationDeadline)}
               </p>

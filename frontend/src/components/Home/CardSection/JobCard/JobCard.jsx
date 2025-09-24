@@ -1,5 +1,6 @@
 import { MapPin, Calendar, DollarSign, Building2, Clock } from 'lucide-react';
 import { motion } from "motion/react"
+import { Link } from 'react-router';
 const JobCard = ({job}) => {
     // const job = {
     //     title: "Software Engineer",
@@ -115,6 +116,7 @@ const JobCard = ({job}) => {
                     </div>
 
                     {/* Action Button */}
+                    <Link to={`/details/${job._id}`}>
                     <motion.button
                         whileHover={{
                             scale: 1.03
@@ -123,6 +125,7 @@ const JobCard = ({job}) => {
                         className="w-full bg-blue-600 hover:bg-blue-700 text-white font-medium py-3 px-4 rounded-lg transition-colors duration-200">
                         Apply Now
                     </motion.button>
+                    </Link>
                 </div>
             </motion.div>
         </div>

@@ -10,7 +10,8 @@ const childRoutes=[
         Component:Home
     },
     {
-        path:'/details',
+        path:'/details/:id',
+        loader:({params})=>fetch(`http://localhost:3000/job/${params.id}`),
         Component:Details
     },
     {
