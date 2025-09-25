@@ -1,5 +1,6 @@
 import Apply from "../../components/Apply/Apply";
 import Dashboard from "../../components/Dashboard/Dashboard";
+import Overview from "../../components/Dashboard/DashboardContent/Overview/Overview";
 import Details from "../../components/Details/Details";
 import Home from "../../components/Home/Home";
 import Login from "../../components/Login/Login";
@@ -18,7 +19,20 @@ const childRoutes=[
     },
     {
         path:'/dashboard',
-        Component:Dashboard
+        element:<Private><Dashboard></Dashboard></Private>,
+        children:[
+            {
+                path:'overview',
+                loader:async()=>{
+                    const jobsF=await fetch('http://localhost:3000/jobs')
+                    const applicationsF=await fetch('http://localhost:3000/applications')
+                    const jobs= await jobsF.json()
+                    const applications=await applicationsF.json()
+                    return {jobs,applications}
+                },
+                Component:Overview
+            }
+        ]
     },
     {
         path:'/login',

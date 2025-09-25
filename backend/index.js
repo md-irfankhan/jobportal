@@ -39,6 +39,12 @@ async function run() {
       res.send(result);
     })
 
+    app.get('/applications',async(req,res)=>{
+      const cursor=applications.find()
+      const result=await cursor.toArray()
+      res.send(result)
+    })
+
     app.get('/job/:id',async(req,res)=>{
       const id=req.params.id;
       const query={_id:new ObjectId(id)};

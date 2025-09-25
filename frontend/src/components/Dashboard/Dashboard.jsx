@@ -1,9 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import Sidebar from './DashboardComponents/Sidebar/Sidebar';
 import Bottombar from './DashboardComponents/Bottombar/Bottombar';
+import { Navigate, Outlet, useLocation } from 'react-router';
 
 const Dashboard = () => {
     const [width, setWidth] = useState(window.innerWidth);
+    const location=useLocation()
+    
     useEffect(() => {
         const handleResize = () => {
             setWidth(window.innerWidth)
@@ -17,6 +20,11 @@ const Dashboard = () => {
         };
 
     }, [])
+
+    if(location.pathname=='/dashboard'|| location.pathname=='/dashboard/'){
+        return <Navigate to={'/dashboard/overview'}></Navigate>
+
+    }
     return (
         <div className="min-h-screen bg-gray-50">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
@@ -24,7 +32,7 @@ const Dashboard = () => {
                     {
                         width < 768 ? <>
                             <main className="flex-1">
-                                Hello Mobile
+                                <Outlet></Outlet>
                             </main>
                             <Bottombar></Bottombar>
 
@@ -33,7 +41,7 @@ const Dashboard = () => {
                             <Sidebar></Sidebar>
                             <main className="flex-1 min-h-screen">
                                 <div className="bg-white rounded-xl shadow-sm min-h-full border border-gray-100">
-                                    Hello
+                                    <Outlet></Outlet>
                                 </div>
                             </main>
                         </>

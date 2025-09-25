@@ -1,13 +1,29 @@
-.active {
+.space-y-1> .active {
+  display: flex;                  /* flex */
+  align-items: center;            /* items-center */
+  gap: 0.75rem;                   /* space-x-3 → 3 * 0.25rem = 0.75rem */
+  
+  padding-left: 1rem;             /* px-4 → 1rem left/right */
+  padding-right: 1rem;
+  padding-top: 0.75rem;           /* py-3 → 0.75rem top/bottom */
+  padding-bottom: 0.75rem;
+  
+  border-radius: 0.5rem;          /* rounded-lg */
+  
+  font-size: 0.875rem;            /* text-sm */
+  font-weight: 500;               /* font-medium */
+  
+  background-image: linear-gradient(to right, #3b82f6, #2563eb);
   /* bg-gradient-to-r from-blue-500 to-blue-600 */
-  background: linear-gradient(to right, #3b82f6, #2563eb);
   
-  /* text-white */
-  color: white;
+  color: #ffffff;                 /* text-white */
   
-  /* shadow-md */
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1),
+              0 2px 4px -2px rgba(0,0,0,0.1); /* shadow-md */
   
-  /* transform scale-105 */
-  transform: scale(1.05);
+  transform: scale(1.05);         /* transform scale-105 */
+  
+  transition: all 0.2s;           /* transition-all duration-200 */
+  
+  cursor: pointer;                /* cursor-pointer */
 }
