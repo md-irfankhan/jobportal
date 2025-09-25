@@ -1,5 +1,6 @@
 import Apply from "../../components/Apply/Apply";
 import Dashboard from "../../components/Dashboard/Dashboard";
+import JobPost from "../../components/Dashboard/DashboardContent/JobPost/JobPost";
 import Overview from "../../components/Dashboard/DashboardContent/Overview/Overview";
 import Details from "../../components/Details/Details";
 import Home from "../../components/Home/Home";
@@ -31,6 +32,10 @@ const childRoutes=[
                     return {jobs,applications}
                 },
                 Component:Overview
+            },
+            {
+                path:'postjob',
+                Component:JobPost
             }
         ]
     },

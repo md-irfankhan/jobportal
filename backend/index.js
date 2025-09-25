@@ -59,6 +59,12 @@ async function run() {
 
     })
 
+    app.post('/job',async(req,res)=>{
+      const reqBody=req.body;
+      const result=jobsColl.insertOne(reqBody);
+      res.send(result)
+    })
+
 
     //user Logic
 
