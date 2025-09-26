@@ -2,7 +2,7 @@ import { use, useEffect, useState } from 'react';
 import { Eye, Edit, Trash2 } from 'lucide-react';
 import { useLoaderData } from 'react-router';
 import { useAuth } from '../../../../AuthProvider/AuthProvider';
-
+import axios from 'axios'
 const MyJob = () => {
   const [job,setJob]=useState([])
   const {user}=useAuth();
@@ -26,32 +26,7 @@ const MyJob = () => {
     return filtered.length
   }
   
-  const [jobs, setJobs] = useState([
-    {
-      id: 1,
-      companyName: "TechCorp Solutions",
-      date: "2024-03-15",
-      applicants: 24,
-      position: "Frontend Developer",
-      description: "Looking for an experienced React developer..."
-    },
-    {
-      id: 2,
-      companyName: "StartupXYZ",
-      date: "2024-03-18",
-      applicants: 12,
-      position: "Full Stack Engineer",
-      description: "Join our growing team as a full stack developer..."
-    },
-    {
-      id: 3,
-      companyName: "Global Industries",
-      date: "2024-03-20",
-      applicants: 45,
-      position: "UI/UX Designer",
-      description: "Creative designer needed for innovative projects..."
-    }
-  ]);
+
 
   const [selectedJob, setSelectedJob] = useState(null);
   const [showModal, setShowModal] = useState(false);
@@ -69,7 +44,12 @@ const MyJob = () => {
 
   const handleDelete = (jobId) => {
     if (window.confirm('Are you sure you want to delete this job?')) {
-      setJobs(jobs.filter(job => job.id !== jobId));
+      axios.delete(`http://localhost:3000/deljob/${jobId}`).then(res=>{
+        if(res.data.deletedCount>0){
+          setJob(job.filter(job => job._id !== jobId));
+        }
+      })
+    
     }
   };
 

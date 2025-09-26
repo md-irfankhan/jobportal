@@ -66,6 +66,13 @@ async function run() {
 
     })
 
+    app.delete('/deljob/:id',async(req,res)=>{
+      const id=req.params.id;
+      const query={_id:new ObjectId(id)}
+      const result=await jobsColl.deleteOne(query)
+      res.send(result)
+    })
+
     app.post('/job',async(req,res)=>{
       const reqBody=req.body;
       const result=jobsColl.insertOne(reqBody);
