@@ -1,5 +1,5 @@
 import React from 'react';
-import {useLocation} from 'react-router'
+import {NavLink, useLocation} from 'react-router'
 import { User, Plus, Briefcase, FileText, Home, Settings, LogOut, Bell, ChevronRight } from 'lucide-react';
 import './Sidebar.css'
 const Sidebar = () => {
@@ -9,23 +9,23 @@ const Sidebar = () => {
             <div className="bg-white rounded-xl shadow-sm p-4 border border-gray-100">
               <div className="space-y-1">
                 {/* Dashboard Link - Active */}
-                <div className="flex items-center space-x-3 px-4 py-3 rounded-lg text-sm font-medium bg-gradient-to-r from-blue-500 to-blue-600 text-white shadow-md transform scale-105 transition-all duration-200 cursor-pointer">
+                <NavLink to={'/dashboard/overview'} className="flex items-center space-x-3 px-4 py-3 rounded-lg text-sm font-medium text-gray-700 hover:bg-gray-50 hover:text-gray-900 hover:scale-102 transition-all duration-200 cursor-pointer ">
                   <Home className="w-5 h-5 " />
                   <span>Dashboard</span>
                   {/* <div className="ml-auto w-2 h-2 bg-white rounded-full"></div> */}
-                </div>
+                </NavLink>
                 
                 {/* Profile Link */}
-                <div className=" flex items-center space-x-3 px-4 py-3 rounded-lg text-sm font-medium text-gray-700 hover:bg-gray-50 hover:text-gray-900 hover:scale-102 transition-all duration-200 cursor-pointer ">
+                <NavLink to={'/dashboard/profile'}  className=" flex items-center space-x-3 px-4 py-3 rounded-lg text-sm font-medium text-gray-700 hover:bg-gray-50 hover:text-gray-900 hover:scale-102 transition-all duration-200 cursor-pointer ">
                   <User className="w-5 h-5 " />
                   <span>Profile</span>
-                </div>
+                </NavLink>
                 
                 {/* Post Job Link */}
-                <div className="flex items-center space-x-3 px-4 py-3 rounded-lg text-sm font-medium text-gray-700 hover:bg-gray-50 hover:text-gray-900 hover:scale-102 transition-all duration-200 cursor-pointer">
+                <NavLink to={'/dashboard/postjob'} className="flex items-center space-x-3 px-4 py-3 rounded-lg text-sm font-medium text-gray-700 hover:bg-gray-50 hover:text-gray-900 hover:scale-102 transition-all duration-200 cursor-pointer">
                   <Plus className="w-5 h-5" />
                   <span>Post Job</span>
-                </div>
+                </NavLink>
                 
                 {/* My Jobs Link */}
                 <div className="flex items-center space-x-3 px-4 py-3 rounded-lg text-sm font-medium text-gray-700 hover:bg-gray-50 hover:text-gray-900 hover:scale-102 transition-all duration-200 cursor-pointer">

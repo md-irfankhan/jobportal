@@ -52,6 +52,13 @@ async function run() {
       res.send(result);
 
     })
+    app.get('/myjob/:email',async(req,res)=>{
+      const email=req.params.email;
+      const query={hr_email:email}
+      const cursor=jobsColl.find(query)
+      const result=await cursor.toArray()
+      res.send(result)
+    })
     app.post('/apply',async(req,res)=>{
       const reqBody=req.body;
       const result=await applications.insertOne(reqBody);

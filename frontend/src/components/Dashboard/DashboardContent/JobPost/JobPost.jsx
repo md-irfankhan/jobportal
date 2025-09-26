@@ -80,7 +80,7 @@ export default function JobPost() {
       requirements: requirements,
       responsibilities: responsibilities,
       status: formData.get('status'),
-      hr_email: formData.get('hr_email'),
+      hr_email: user?.email,
       hr_name: formData.get('hr_name'),
       company_logo: formData.get('company_logo') || ''
     };

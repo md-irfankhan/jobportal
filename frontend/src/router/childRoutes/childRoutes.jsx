@@ -1,6 +1,9 @@
+
+import { Suspense } from "react";
 import Apply from "../../components/Apply/Apply";
 import Dashboard from "../../components/Dashboard/Dashboard";
 import JobPost from "../../components/Dashboard/DashboardContent/JobPost/JobPost";
+import MyJob from "../../components/Dashboard/DashboardContent/MyJob/MyJob";
 import Overview from "../../components/Dashboard/DashboardContent/Overview/Overview";
 import Details from "../../components/Details/Details";
 import Home from "../../components/Home/Home";
@@ -29,13 +32,26 @@ const childRoutes=[
                     const applicationsF=await fetch('http://localhost:3000/applications')
                     const jobs= await jobsF.json()
                     const applications=await applicationsF.json()
-                    return {jobs,applications}
+                    return {applications,jobs}
                 },
                 Component:Overview
             },
             {
                 path:'postjob',
                 Component:JobPost
+            },
+            {
+                path:'myjobs',
+                loader:async()=>{
+                   
+                    // const myjobsF=await fetch(`http://localhost:3000/myjobs/${user?.email}`)
+                    const applicationsF=await fetch('http://localhost:3000/applications')
+                    // const myjobs=await myjobsF.json()
+                    const applications=await applicationsF.json()
+                    return applications
+                },
+                Component:MyJob
+
             }
         ]
     },
