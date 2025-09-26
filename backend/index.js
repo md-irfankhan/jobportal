@@ -52,6 +52,13 @@ async function run() {
       res.send(result);
 
     })
+    app.get('/application/:id',async(req,res)=>{
+      const id=req.params.id;
+      const query={_id:new ObjectId(id)};
+      const result=await applications.findOne(query);
+      res.send(result);
+
+    })
     app.get('/myjob/:email',async(req,res)=>{
       const email=req.params.email;
       const query={hr_email:email}
@@ -80,16 +87,57 @@ async function run() {
 
     })
 
+    app.get('/myapplications/:email',async(req,res)=>{
+      const email=req.params.email;
+      const query={
+        email:email
+      }
+      const cursor=applications.find(query)
+      const result=await cursor.toArray()
+      for(const application of result){
+        const jobId=application.jobId;
+        const query={_id:new ObjectId(jobId)}
+        const job=await jobsColl.findOne(query)
+        application.company=job.company
+        application.title=job.title
+        application.jobType=job.jobType
+        application.requirements=job.requirements
+        console.log(job.requirments);
+        
+        
+        // application.company = job.company
+      }
+      res.send(result)
+    })
+
     app.delete('/deljob/:id',async(req,res)=>{
       const id=req.params.id;
       const query={_id:new ObjectId(id)}
       const result=await jobsColl.deleteOne(query)
       res.send(result)
     })
+    app.delete('/delapp/:id',async(req,res)=>{
+      const id=req.params.id;
+      const query={_id:new ObjectId(id)}
+      const result=await applications.deleteOne(query)
+      res.send(result)
+    })
 
     app.post('/job',async(req,res)=>{
       const reqBody=req.body;
       const result=jobsColl.insertOne(reqBody);
+      res.send(result)
+    })
+    app.put('/updateapp',async(req,res)=>{
+      const reqBody=req.body;
+      const {_id,...values}=reqBody;
+      const query={_id:new ObjectId(_id)}
+      const update={
+        $set:{
+          ...values
+        }
+      }
+      const result=await applications.updateOne(query,update)
       res.send(result)
     })
 

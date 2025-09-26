@@ -11,6 +11,8 @@ import Login from "../../components/Login/Login";
 import Private from "../../components/Private/Private";
 import Register from "../../components/Register/Register";
 import UpdateJob from "../../components/Dashboard/DashboardContent/MyJob/UpdateJob/UpdateJob";
+import MyApplications from "../../components/Dashboard/DashboardContent/MyApplications/MyApplications";
+import UpdateApplication from "../../components/Dashboard/DashboardContent/MyApplications/UpdateApplication/UpdateApplication";
 
 const childRoutes=[
     {
@@ -59,6 +61,13 @@ const childRoutes=[
                 },
                 Component:MyJob
 
+            },{
+                path:'myapplications',
+                Component:MyApplications
+            },{
+                path:'myapplications/:id/edit',
+                loader:({params})=>fetch(`http://localhost:3000/application/${params.id}`),
+                Component:UpdateApplication
             }
         ]
     },
