@@ -10,6 +10,7 @@ import Home from "../../components/Home/Home";
 import Login from "../../components/Login/Login";
 import Private from "../../components/Private/Private";
 import Register from "../../components/Register/Register";
+import UpdateJob from "../../components/Dashboard/DashboardContent/MyJob/UpdateJob/UpdateJob";
 
 const childRoutes=[
     {
@@ -39,6 +40,12 @@ const childRoutes=[
             {
                 path:'postjob',
                 Component:JobPost
+            },
+            {
+                path:'postjob/:id/edit',
+                loader:({params})=>fetch(`http://localhost:3000/job/${params.id}`),
+                Component:UpdateJob
+
             },
             {
                 path:'myjobs',

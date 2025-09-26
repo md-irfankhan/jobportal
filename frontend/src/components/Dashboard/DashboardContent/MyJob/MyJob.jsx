@@ -2,6 +2,7 @@ import { use, useEffect, useState } from 'react';
 import { Eye, Edit, Trash2 } from 'lucide-react';
 import { useLoaderData } from 'react-router';
 import { useAuth } from '../../../../AuthProvider/AuthProvider';
+import { Link } from 'react-router';
 import axios from 'axios'
 const MyJob = () => {
   const [job,setJob]=useState([])
@@ -105,13 +106,14 @@ const MyJob = () => {
                       >
                         <Eye size={16} />
                       </button>
-                      <button
-                        onClick={() => handleEdit(job._id)}
+                      <Link
+                      to={`/dashboard/postjob/${job._id}/edit`}
+                        // onClick={() => handleEdit(job._id)}
                         className="text-green-600 hover:text-green-900 p-2 rounded-md hover:bg-green-50 transition-colors"
                         title="Edit Job"
                       >
                         <Edit size={16} />
-                      </button>
+                      </Link>
                       <button
                         onClick={() => handleDelete(job._id)}
                         className="text-red-600 hover:text-red-900 p-2 rounded-md hover:bg-red-50 transition-colors"

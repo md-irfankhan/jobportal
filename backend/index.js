@@ -59,6 +59,20 @@ async function run() {
       const result=await cursor.toArray()
       res.send(result)
     })
+    app.put('/jobupdate',async(req,res)=>{
+      const reqBody=req.body;
+      const {_id,...value}=reqBody
+      const query={_id:new ObjectId(_id)}
+      const update={
+        $set:{
+          ...value
+        }
+      }
+      const result =await jobsColl.updateOne(query,update)
+      console.log(result);
+      
+      res.send(result)
+    })
     app.post('/apply',async(req,res)=>{
       const reqBody=req.body;
       const result=await applications.insertOne(reqBody);
